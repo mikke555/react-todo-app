@@ -1,0 +1,78 @@
+import React from 'react';
+import Todos from './components/Todos';
+import AddForm from './components/AddForm';
+import uuid from 'uuid';
+
+class App extends React.Component {
+  state = {
+    todos: [
+      {
+        id: uuid(),
+        content: 'mine 1000 minerals',
+        completed: false
+      },
+      {
+        id: uuid(),
+        content: 'construct additional pylons',
+        completed: false
+      },
+      {
+        id: uuid(),
+        content: 'mine some vespene gas',
+        completed: false
+      },
+      {
+        id: uuid(),
+        content: 'build at least 20 zealots',
+        completed: false
+      },
+      {
+        id: uuid(),
+        content: 'locate and destory all zerg bases',
+        completed: false
+      },
+      {
+        id: uuid(),
+        content: 'return to Aiur',
+        completed: false
+      },
+    ]
+  }
+
+  addTodo = (content) => {
+    const newTodo = {
+      id: uuid(),
+      content,
+      completed: false
+    }
+    this.setState({ todos: [...this.state.todos, newTodo] });
+  }
+
+  onComplete = (id) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    })
+  }
+
+  deleteTodo = (id) => {
+    this.setState({ todos: this.state.todos.filter(todo => todo.id !== id) });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <div className="app-container">
+          <AddForm addTodo={this.addTodo} numTodos={this.state.todos.length} />
+          <Todos todos={this.state.todos} markComplete={this.onComplete} deleteTodo={this.deleteTodo} />
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+export default App;

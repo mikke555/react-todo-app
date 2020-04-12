@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  height: 100vh; 
+  font-size: 16px; 
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #f0f1f2;
+  /* background-color: #74baff60;   */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;  
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.app-container {
+  background-color: #fff;  
+  border-radius: 6px;
+  margin-top: 70px;  
+  margin-bottom: 50px;  
+  min-width: 100px;
+  box-shadow: 0 5px 45px rgba(0,0,0, 0.2);
+}
+
+.AddForm {  
+  background-color: #e3e9ed;  
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; 
+}
+
+.form-control {
+  width: 100%;  
+  padding: 0 30px 0;    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+}
+
+.AddForm .input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.AddForm .fa-plus {
+  display: inline-block;
+  font-size: 1rem;
+  margin-right: 30px;  
+  color: #86a0b1;
+  order: -1;
+  transition: all 250ms ease-in;
+}
+
+.AddForm input {  
+  padding: 30px 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: #e3e9ed;  
+  color: rgba(0, 0, 0, 0.50);
+  width: 100%; 
+  line-height: 2;
+  font-size: 1.8rem;
+  order: 1;
+}
+
+.AddForm input::placeholder {
+  color: #86a0b1;  
+  transition: all 250ms ease-out;
+}
+
+.AddForm input:focus::placeholder {
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.AddForm input:focus + .fa-plus {
+  transform: scale(2.2);
+}
+
+.Todo-item {  
+  position: relative;
+  padding: 0 20px 0 10px;
+  font-size: 16px;
+  width: 100%;
+  border-bottom: 1px solid #e7ebee;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;  
+  overflow: hidden; 
+  animation: fadeIn 300ms ease-in;
+  transition: all 300ms ease-in-out;
+}
+
+.Todo-item:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}  
+
+.Todo-item:hover {
+  background-color: #f1f4f6;
+}
+
+.Todo-item.completed {
+  background: #2ecc7021;
+  transition: all 200ms ease-in;
+}
+
+.Todo-item.completed:hover, .Todo-item.completed:active {
+  background: #2ecc702a;
+}
+
+.Todo-content {  
+  position: relative;
+  cursor: pointer;
+  order: 1;    
+  transition: all 150ms ease-in-out;
+}
+
+.Todo-item.completed .Todo-content {
+  color: rgba(0, 0, 0, 0.40);
+}
+
+.Todo-content::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.40);
+  top: 55%;
+  left: 0;
+  transform: scaleX(0);
+  transition: all 150ms ease-in-out;
+  transition-delay: 50ms;
+  transform-origin: left;
+}
+
+.Todo-item.completed .Todo-content::after {
+  transform: scaleX(1);  
+}
+
+.Todo-icon {  
+  cursor: pointer;  
+  padding-right: 15px;
+}
+
+.clickable {
+  display: flex;
+  flex: 2;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Todo-del-icon {
+  position: relative;
+  order: 2;
+  margin-left: auto;
+  height: 100%;
+  opacity: 1; 
+  transition: all 300ms ease;  
+  border-radius: 100%;
+  cursor: pointer; 
+  color: white;
+  background: #74baff98;  
+  animation: slideIn 150ms ease-in-out; 
+  z-index: 100;  
+}
+
+.Todo-item.completed .Todo-del-icon {
+  background: #2ecc70d7;
+}
+
+.Todo-del-icon:hover, .Todo-item.completed .Todo-del-icon:hover {
+  background: #ff5252; 
+  color: #fff;
+  opacity: 1;
+}
+
+.Todo-del-icon .fa-trash-alt {
+  padding: 10px 12px;
+}
+
+.Todo-icon .fa-check {
+  color: #e7ebee;
+  opacity: 1;
+  font-size: 20px;  
+  transition: all 250ms ease; 
+  width: 100%;
+  padding: 20px;
+}
+
+.Todo-item.completed .fa-check {
+  color: #2ecc70d7;
+}
+
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(+120%) ;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) ;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } 
+  to {
+    opacity: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    
+  }
+
+  .app-container, .AddForm {
+    border-radius: 0;
+  }
+
+  .app-container {
+    margin: 0;
+    width: 100vw;
+    height: 100%;    
+    box-shadow: none;
+  }
+
+  .Todo-item {
+    font-size: 14px;
+  }
+
+  .Todo-icon .fa-check {
+    padding: 20px 0;
+  }
+
+  .AddForm input {      
+    font-size: 1.5rem;    
+    padding: 20px 0;
+  }
+}
