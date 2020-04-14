@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 export class Todos extends Component {
 
@@ -11,7 +15,7 @@ export class Todos extends Component {
   }
 
   render() {
-    const style = {
+    const footer = {
       textAlign: "right",
       color: "#7190a4",
       background: "#f1f4f6",
@@ -19,20 +23,24 @@ export class Todos extends Component {
       textTransformation: "upperCase",
       fontSize: "13px",
       borderBottomLeftRadius: "6px",
-      borderBottomRightRadius: "6px",
+      borderBottomRightRadius: "6px"
     }
 
     return (
       <div>
-        <ul className="Todos-list">
+        <TransitionGroup component="ul" className="todo-list">
           {
             this.props.todos.map(todo =>
-              <Todo todo={todo} key={todo.id} markComplete={this.props.markComplete} deleteTodo={this.props.deleteTodo} />)
+              (<CSSTransition key={todo.id} timeout={550} classNames="todo">
+                <Todo todo={todo} key={todo.id} markComplete={this.props.markComplete} deleteTodo={this.props.deleteTodo} />
+              </CSSTransition>)
+            )
           }
-        </ul>
+        </TransitionGroup>
+
         {
           this.props.todos.length > 0 &&
-          <footer style={style}>
+          <footer style={footer}>
             {this.numUncompleted()}
           </footer>
         }
