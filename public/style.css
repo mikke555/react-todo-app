@@ -293,7 +293,7 @@ h1 {
     FOOTER
 ==================================== */
 
-.todo-footer {
+.Todo-footer {
 	background: #f1f4f6;
 	font-size: 12px;
 	border-bottom-left-radius: 6px;
@@ -301,28 +301,35 @@ h1 {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 11px 20px 11px 30px;
 	color: #5c7586;
 	text-align: right;
 	overflow: hidden;
 }
 
-.todo-footer button {
+.Todo-footer > * {
+	padding: 0 20px 0 30px;
+}
+
+.Todo-footer button {
 	text-decoration: none;
 	color: #5c7586;
 	border: none;
 	outline: none;
 	font-family: inherit;
 	font-size: inherit;
+	background: inherit;
+	cursor: pointer;
+	padding-top: 11px;
+	padding-bottom: 11px;
 }
 
-.todo-footer button:hover {
+.Todo-footer button:hover {
 	text-decoration: underline;
 	color: #475a66;
 	transition: all 200ms ease;
 }
 
-.todo-footer i.fas {
+.Todo-footer i.fas {
 	color: #5c7586a8;
 	margin-left: 5px;
 	font-size: 12px;

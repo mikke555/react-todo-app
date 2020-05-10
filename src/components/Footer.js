@@ -12,7 +12,7 @@ class Footer extends Component {
 		return (
 			<React.Fragment>
 				{this.props.todos.length > 0 && (
-					<footer className='todo-footer'>
+					<footer className='Todo-footer'>
 						<span>
 							<button href='#' onClick={this.props.toggleCompleted}>
 								{this.props.showCompleted ? `Hide completed` : `Show completed`}

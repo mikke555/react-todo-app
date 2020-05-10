@@ -29,7 +29,7 @@ class App extends React.Component {
 			},
 			{
 				id: uuid(),
-				content: 'locate and destory all zerg bases',
+				content: 'locate and destory all zerg hatcheries',
 				completed: false
 			},
 			{
