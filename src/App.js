@@ -2,6 +2,7 @@ import React from 'react';
 import Todos from './components/Todos';
 import AddForm from './components/AddForm';
 import uuid from 'uuid';
+import Footer from './components/Footer';
 
 class App extends React.Component {
   state = {
@@ -36,7 +37,8 @@ class App extends React.Component {
         content: 'return to Aiur',
         completed: false
       },
-    ]
+    ],
+    showCompleted: true
   }
 
   addTodo = (content) => {
@@ -48,7 +50,7 @@ class App extends React.Component {
     this.setState({ todos: [...this.state.todos, newTodo] });
   }
 
-  onComplete = (id) => {
+  toggleComplete = (id) => {
     this.setState({
       todos: this.state.todos.map(todo => {
         if (todo.id === id) {
@@ -63,14 +65,36 @@ class App extends React.Component {
     this.setState({ todos: this.state.todos.filter(todo => todo.id !== id) });
   }
 
+  toggleCompleted = () => {
+    if (this.state.todos.filter(todo => todo.completed).length === 0)
+      return;
+
+    this.setState({
+      showCompleted: !this.state.showCompleted
+    })
+  }
+
+
   render() {
     return (
-      <React.Fragment>
-        <div className="app-container">
-          <AddForm addTodo={this.addTodo} numTodos={this.state.todos.length} />
-          <Todos todos={this.state.todos} markComplete={this.onComplete} deleteTodo={this.deleteTodo} />
-        </div>
-      </React.Fragment>
+      <div className="app-container">
+        <AddForm addTodo={this.addTodo} numTodos={this.state.todos.length} />
+        <Todos
+          todos={this.state.todos}
+          toggleComplete={this.toggleComplete}
+          deleteTodo={this.deleteTodo}
+          toggleCompleted={this.toggleCompleted}
+          showCompleted={this.state.showCompleted}
+        />
+        <Footer
+          todos={this.state.todos}
+          toggleComplete={this.toggleComplete}
+          deleteTodo={this.deleteTodo}
+          toggleCompleted={this.toggleCompleted}
+          showCompleted={this.state.showCompleted}
+        />
+      </div>
+
     );
   }
 }
