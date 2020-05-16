@@ -298,9 +298,9 @@ h1 {
 
 	.AddForm input {
 		padding: 20px 0;
+		font-size: 1rem;
 	}
 
-	.AddForm input,
 	.AddForm input::placeholder {
 		font-size: 22px;
 	}
@@ -356,7 +356,11 @@ h1 {
 		padding: 0 12px;
 	}
 
-	.AddForm input,
+	.AddForm input {
+		padding: 20px 0;
+		font-size: 1rem;
+	}
+
 	.AddForm input::placeholder {
 		font-size: 16px;
 	}
