@@ -67,7 +67,7 @@ class App extends React.Component {
 
 	toggleCompleted = () => {
 		if (this.state.todos.filter((todo) => todo.completed).length === 0) return;
-
+		
 		this.setState({
 			showCompleted: !this.state.showCompleted
 		});

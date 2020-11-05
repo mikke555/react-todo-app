@@ -11,8 +11,8 @@ export class Todo extends Component {
 
 	getDisplay = () => {
 		return this.props.todo.completed && this.props.showCompleted === false
-			? { display: 'none' }
-			: { display: 'flex' };
+		? { display: 'none' }
+		: { display: 'flex' }		
 	};
 
 	handleDelete = () => {
